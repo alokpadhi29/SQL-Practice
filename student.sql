@@ -604,3 +604,522 @@ mysql> select * from student;
 6 rows in set (0.00 sec)
 
 mysql> notee;
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| college            |
+| employee_01        |
+| information_schema |
+| mysql              |
+| performance_schema |
+| shop               |
+| sys                |
++--------------------+
+7 rows in set (0.03 sec)
+
+mysql> udse college;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'udse college' at line 1
+mysql> use college;
+Database changed
+mysql> select * from student;
++------+-------------------+----------+------+--------------+-------------------+------------------+--------+------+------+
+| id   | name              | city     | age  | created_date | Father_name       | mother_name      | graede | dob  | mark |
++------+-------------------+----------+------+--------------+-------------------+------------------+--------+------+------+
+|    1 | alok              | bbsr     |   28 | 2026-09-17   | ratnakar padhi    | jayanti padhi    | A      | NULL |   90 |
+|    2 | sai               | cuttack  |   22 | 2026-09-17   | maydhare padhi    | jayanti padhi    | A      | NULL |   92 |
+|    4 | satyabrata        | balesore |   26 | 2026-09-17   | sibaji sankar sau | madhumita padhi  | B      | NULL |   80 |
+|    5 | satyabrata parida | balesore |   26 | 2026-09-17   | sibaji sankar sau | madhumita bahara | B      | NULL |   75 |
+|    6 | sainath parida    | bbsr     |   26 | 2026-09-17   | sankar sau        | madhumita bahara | B      | NULL |   79 |
+|    3 | satya             | bbsr     |   23 | 2026-09-17   | sibaji sau        | madhu padhi      | NULL   | NULL |   78 |
++------+-------------------+----------+------+--------------+-------------------+------------------+--------+------+------+
+6 rows in set (0.01 sec)
+
+mysql> selct * from marks;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'selct * from marks' at line 1
+mysql> select * from marks;
++---------+------+------------+
+| subject | mark | student_id |
++---------+------+------------+
+| SQL     |   90 |          1 |
+| SQL     |   78 |          2 |
+| SQL     |   92 |          3 |
+| SQL     |   70 |          4 |
+| SQL     |   86 |          5 |
+| SQL     |   80 |          6 |
++---------+------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from student order by id ASE;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ASE' at line 1
+mysql> select * from student order by id ASc;
++------+-------------------+----------+------+--------------+-------------------+------------------+--------+------+------+
+| id   | name              | city     | age  | created_date | Father_name       | mother_name      | graede | dob  | mark |
++------+-------------------+----------+------+--------------+-------------------+------------------+--------+------+------+
+|    1 | alok              | bbsr     |   28 | 2026-09-17   | ratnakar padhi    | jayanti padhi    | A      | NULL |   90 |
+|    2 | sai               | cuttack  |   22 | 2026-09-17   | maydhare padhi    | jayanti padhi    | A      | NULL |   92 |
+|    3 | satya             | bbsr     |   23 | 2026-09-17   | sibaji sau        | madhu padhi      | NULL   | NULL |   78 |
+|    4 | satyabrata        | balesore |   26 | 2026-09-17   | sibaji sankar sau | madhumita padhi  | B      | NULL |   80 |
+|    5 | satyabrata parida | balesore |   26 | 2026-09-17   | sibaji sankar sau | madhumita bahara | B      | NULL |   75 |
+|    6 | sainath parida    | bbsr     |   26 | 2026-09-17   | sankar sau        | madhumita bahara | B      | NULL |   79 |
++------+-------------------+----------+------+--------------+-------------------+------------------+--------+------+------+
+6 rows in set (0.00 sec)
+
+mysql> select * from student;
++------+-------------------+----------+------+--------------+-------------------+------------------+--------+------+------+
+| id   | name              | city     | age  | created_date | Father_name       | mother_name      | graede | dob  | mark |
++------+-------------------+----------+------+--------------+-------------------+------------------+--------+------+------+
+|    1 | alok              | bbsr     |   28 | 2026-09-17   | ratnakar padhi    | jayanti padhi    | A      | NULL |   90 |
+|    2 | sai               | cuttack  |   22 | 2026-09-17   | maydhare padhi    | jayanti padhi    | A      | NULL |   92 |
+|    4 | satyabrata        | balesore |   26 | 2026-09-17   | sibaji sankar sau | madhumita padhi  | B      | NULL |   80 |
+|    5 | satyabrata parida | balesore |   26 | 2026-09-17   | sibaji sankar sau | madhumita bahara | B      | NULL |   75 |
+|    6 | sainath parida    | bbsr     |   26 | 2026-09-17   | sankar sau        | madhumita bahara | B      | NULL |   79 |
+|    3 | satya             | bbsr     |   23 | 2026-09-17   | sibaji sau        | madhu padhi      | NULL   | NULL |   78 |
++------+-------------------+----------+------+--------------+-------------------+------------------+--------+------+------+
+6 rows in set (0.00 sec)
+
+mysql> select * from marks;
++---------+------+------------+
+| subject | mark | student_id |
++---------+------+------------+
+| SQL     |   90 |          1 |
+| SQL     |   78 |          2 |
+| SQL     |   92 |          3 |
+| SQL     |   70 |          4 |
+| SQL     |   86 |          5 |
+| SQL     |   80 |          6 |
++---------+------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select s.name, m.mark from student as s inner join marks as m s.is=m.student_id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 's.is=m.student_id' at line 1
+mysql> select s.name, m.mark from student as s inner join marks as m on.s.id=m.student_id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'on.s.id=m.student_id' at line 1
+mysql> select s.name, m.mark from student as s inner join marks as m on s.id=m.student_id;
++-------------------+------+
+| name              | mark |
++-------------------+------+
+| alok              |   90 |
+| sai               |   78 |
+| satyabrata        |   70 |
+| satyabrata parida |   86 |
+| sainath parida    |   80 |
+| satya             |   92 |
++-------------------+------+
+6 rows in set (0.00 sec)
+
+mysql> select s.name,m.subject, m.mark from student as s inner join marks as m on s.id=m.student_id;
++-------------------+---------+------+
+| name              | subject | mark |
++-------------------+---------+------+
+| alok              | SQL     |   90 |
+| sai               | SQL     |   78 |
+| satyabrata        | SQL     |   70 |
+| satyabrata parida | SQL     |   86 |
+| sainath parida    | SQL     |   80 |
+| satya             | SQL     |   92 |
++-------------------+---------+------+
+6 rows in set (0.00 sec)
+
+mysql> select s.name,m.subject from student as s inner join marks as m on s.id=m.student_id;
++-------------------+---------+
+| name              | subject |
++-------------------+---------+
+| alok              | SQL     |
+| sai               | SQL     |
+| satyabrata        | SQL     |
+| satyabrata parida | SQL     |
+| sainath parida    | SQL     |
+| satya             | SQL     |
++-------------------+---------+
+6 rows in set (0.00 sec)
+
+mysql> select s.name,m.subject, m.mark from student as s inner join marks as m on s.id=m.student_id;
++-------------------+---------+------+
+| name              | subject | mark |
++-------------------+---------+------+
+| alok              | SQL     |   90 |
+| sai               | SQL     |   78 |
+| satyabrata        | SQL     |   70 |
+| satyabrata parida | SQL     |   86 |
+| sainath parida    | SQL     |   80 |
+| satya             | SQL     |   92 |
++-------------------+---------+------+
+6 rows in set (0.00 sec)
+
+mysql> select s.name,m.subject, m.mark from student as s left join marks as m on s.id=m.student_id;
++-------------------+---------+------+
+| name              | subject | mark |
++-------------------+---------+------+
+| alok              | SQL     |   90 |
+| sai               | SQL     |   78 |
+| satyabrata        | SQL     |   70 |
+| satyabrata parida | SQL     |   86 |
+| sainath parida    | SQL     |   80 |
+| satya             | SQL     |   92 |
++-------------------+---------+------+
+6 rows in set (0.00 sec)
+
+mysql> select s.name,m.subject, m.mark from student as s right join marks as m on s.id=m.student_id;
++-------------------+---------+------+
+| name              | subject | mark |
++-------------------+---------+------+
+| alok              | SQL     |   90 |
+| sai               | SQL     |   78 |
+| satya             | SQL     |   92 |
+| satyabrata        | SQL     |   70 |
+| satyabrata parida | SQL     |   86 |
+| sainath parida    | SQL     |   80 |
++-------------------+---------+------+
+6 rows in set (0.00 sec)
+
+mysql> delete mark from marks where marks=86;
+ERROR 1109 (42S02): Unknown table 'mark' in MULTI DELETE
+mysql> update marks set mark is null where id=5;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'is null where id=5' at line 1
+mysql> update marks set as mark is null where id=5;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'as mark is null where id=5' at line 1
+mysql> update marks set mark=null where id=5;
+ERROR 1054 (42S22): Unknown column 'id' in 'where clause'
+mysql> update marks set mark='null' where id=5;
+ERROR 1054 (42S22): Unknown column 'id' in 'where clause'
+mysql> update marks set mark=null where student_id=5;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from marks;
++---------+------+------------+
+| subject | mark | student_id |
++---------+------+------------+
+| SQL     |   90 |          1 |
+| SQL     |   78 |          2 |
+| SQL     |   92 |          3 |
+| SQL     |   70 |          4 |
+| SQL     | NULL |          5 |
+| SQL     |   80 |          6 |
++---------+------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select s.name,m.subject, m.mark from student as s left join marks as m on s.id=m.student_id;
++-------------------+---------+------+
+| name              | subject | mark |
++-------------------+---------+------+
+| alok              | SQL     |   90 |
+| sai               | SQL     |   78 |
+| satyabrata        | SQL     |   70 |
+| satyabrata parida | SQL     | NULL |
+| sainath parida    | SQL     |   80 |
+| satya             | SQL     |   92 |
++-------------------+---------+------+
+6 rows in set (0.00 sec)
+
+mysql> select s.name,m.subject from student as s inner join marks as m on s.id=m.student_id;
++-------------------+---------+
+| name              | subject |
++-------------------+---------+
+| alok              | SQL     |
+| sai               | SQL     |
+| satyabrata        | SQL     |
+| satyabrata parida | SQL     |
+| sainath parida    | SQL     |
+| satya             | SQL     |
++-------------------+---------+
+6 rows in set (0.00 sec)
+
+mysql> delete from student where id=5;
+ERROR 1451 (23000): Cannot delete or update a parent row: a foreign key constraint fails (`college`.`marks`, CONSTRAINT `fk_student` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`))
+mysql> delete from marks
+    -> where student_id = 5;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from marks;
++---------+------+------------+
+| subject | mark | student_id |
++---------+------+------------+
+| SQL     |   90 |          1 |
+| SQL     |   78 |          2 |
+| SQL     |   92 |          3 |
+| SQL     |   70 |          4 |
+| SQL     |   80 |          6 |
++---------+------+------------+
+5 rows in set (0.00 sec)
+
+mysql> select s.name,m.subject, m.mark from student as s right join marks as m on s.id=m.student_id;
++----------------+---------+------+
+| name           | subject | mark |
++----------------+---------+------+
+| alok           | SQL     |   90 |
+| sai            | SQL     |   78 |
+| satya          | SQL     |   92 |
+| satyabrata     | SQL     |   70 |
+| sainath parida | SQL     |   80 |
++----------------+---------+------+
+5 rows in set (0.00 sec)
+
+mysql> select s.name,m.subject from student as s inner join marks as m on s.id=m.student_id;
++----------------+---------+
+| name           | subject |
++----------------+---------+
+| alok           | SQL     |
+| sai            | SQL     |
+| satya          | SQL     |
+| satyabrata     | SQL     |
+| sainath parida | SQL     |
++----------------+---------+
+5 rows in set (0.00 sec)
+
+mysql> select s.name,m.subject, m.mark from student as s inner join marks as m on s.id=m.student_id;
++----------------+---------+------+
+| name           | subject | mark |
++----------------+---------+------+
+| alok           | SQL     |   90 |
+| sai            | SQL     |   78 |
+| satya          | SQL     |   92 |
+| satyabrata     | SQL     |   70 |
+| sainath parida | SQL     |   80 |
++----------------+---------+------+
+5 rows in set (0.00 sec)
+
+mysql> select s.name,m.subject, m.mark from student as s left join marks as m on s.id=m.student_id;
++-------------------+---------+------+
+| name              | subject | mark |
++-------------------+---------+------+
+| alok              | SQL     |   90 |
+| sai               | SQL     |   78 |
+| satyabrata        | SQL     |   70 |
+| satyabrata parida | NULL    | NULL |
+| sainath parida    | SQL     |   80 |
+| satya             | SQL     |   92 |
++-------------------+---------+------+
+6 rows in set (0.00 sec)
+
+mysql> select s.name,m.subject, m.mark from student as s left join marks as m on s.id=m.student_id;
++-------------------+---------+------+
+| name              | subject | mark |
++-------------------+---------+------+
+| alok              | SQL     |   90 |
+| sai               | SQL     |   78 |
+| satyabrata        | SQL     |   70 |
+| satyabrata parida | NULL    | NULL |
+| sainath parida    | SQL     |   80 |
+| satya             | SQL     |   92 |
++-------------------+---------+------+
+6 rows in set (0.00 sec)
+
+mysql> select s.name,m.subject, m.mark from student as s left join marks as m on s.id=m.student_id
+    -> union
+    -> select s.name,m.subject, m.mark from student as s right join marks as m on s.id=m.student_id;
++-------------------+---------+------+
+| name              | subject | mark |
++-------------------+---------+------+
+| alok              | SQL     |   90 |
+| sai               | SQL     |   78 |
+| satyabrata        | SQL     |   70 |
+| satyabrata parida | NULL    | NULL |
+| sainath parida    | SQL     |   80 |
+| satya             | SQL     |   92 |
++-------------------+---------+------+
+6 rows in set (0.00 sec)
+
+mysql> select s.name,m.subject, m.mark from student as s right ounter join marks as m on s.id=m.student_id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ounter join marks as m on s.id=m.student_id' at line 1
+mysql> select s.name,m.subject, m.mark from student as s right outer join marks as m on s.id=m.student_id;
++----------------+---------+------+
+| name           | subject | mark |
++----------------+---------+------+
+| alok           | SQL     |   90 |
+| sai            | SQL     |   78 |
+| satya          | SQL     |   92 |
+| satyabrata     | SQL     |   70 |
+| sainath parida | SQL     |   80 |
++----------------+---------+------+
+5 rows in set (0.00 sec)
+
+mysql> select s.name,m.subject, m.mark from student as s left outer join marks as m on s.id=m.student_id;
++-------------------+---------+------+
+| name              | subject | mark |
++-------------------+---------+------+
+| alok              | SQL     |   90 |
+| sai               | SQL     |   78 |
+| satyabrata        | SQL     |   70 |
+| satyabrata parida | NULL    | NULL |
+| sainath parida    | SQL     |   80 |
+| satya             | SQL     |   92 |
++-------------------+---------+------+
+6 rows in set (0.00 sec)
+
+mysql> select s.name,m.subject, m.mark from student as s left outer join marks as m on s.id=m.student_id
+    -> union
+    -> select s.name,m.subject, m.mark from student as s right outer join marks as m on s.id=m.student_id;
++-------------------+---------+------+
+| name              | subject | mark |
++-------------------+---------+------+
+| alok              | SQL     |   90 |
+| sai               | SQL     |   78 |
+| satyabrata        | SQL     |   70 |
+| satyabrata parida | NULL    | NULL |
+| sainath parida    | SQL     |   80 |
+| satya             | SQL     |   92 |
++-------------------+---------+------+
+6 rows in set (0.00 sec)
+
+mysql> select s.name,m.subject, m.mark from student as s cross join marks as m ;
++-------------------+---------+------+
+| name              | subject | mark |
++-------------------+---------+------+
+| alok              | SQL     |   80 |
+| alok              | SQL     |   70 |
+| alok              | SQL     |   92 |
+| alok              | SQL     |   78 |
+| alok              | SQL     |   90 |
+| sai               | SQL     |   80 |
+| sai               | SQL     |   70 |
+| sai               | SQL     |   92 |
+| sai               | SQL     |   78 |
+| sai               | SQL     |   90 |
+| satyabrata        | SQL     |   80 |
+| satyabrata        | SQL     |   70 |
+| satyabrata        | SQL     |   92 |
+| satyabrata        | SQL     |   78 |
+| satyabrata        | SQL     |   90 |
+| satyabrata parida | SQL     |   80 |
+| satyabrata parida | SQL     |   70 |
+| satyabrata parida | SQL     |   92 |
+| satyabrata parida | SQL     |   78 |
+| satyabrata parida | SQL     |   90 |
+| sainath parida    | SQL     |   80 |
+| sainath parida    | SQL     |   70 |
+| sainath parida    | SQL     |   92 |
+| sainath parida    | SQL     |   78 |
+| sainath parida    | SQL     |   90 |
+| satya             | SQL     |   80 |
+| satya             | SQL     |   70 |
+| satya             | SQL     |   92 |
+| satya             | SQL     |   78 |
+| satya             | SQL     |   90 |
++-------------------+---------+------+
+30 rows in set (0.00 sec)
+
+mysql> serlect *from student natural join marks;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'serlect *from student natural join marks' at line 1
+mysql> select *from student natural join marks;
++------+------+------------+----------+------+--------------+-------------------+-----------------+--------+------+---------+------------+
+| mark | id   | name       | city     | age  | created_date | Father_name       | mother_name     | graede | dob  | subject | student_id |
++------+------+------------+----------+------+--------------+-------------------+-----------------+--------+------+---------+------------+
+|   90 |    1 | alok       | bbsr     |   28 | 2026-09-17   | ratnakar padhi    | jayanti padhi   | A      | NULL | SQL     |          1 |
+|   92 |    2 | sai        | cuttack  |   22 | 2026-09-17   | maydhare padhi    | jayanti padhi   | A      | NULL | SQL     |          3 |
+|   80 |    4 | satyabrata | balesore |   26 | 2026-09-17   | sibaji sankar sau | madhumita padhi | B      | NULL | SQL     |          6 |
+|   78 |    3 | satya      | bbsr     |   23 | 2026-09-17   | sibaji sau        | madhu padhi     | NULL   | NULL | SQL     |          2 |
++------+------+------------+----------+------+--------------+-------------------+-----------------+--------+------+---------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select s.name,m.subject, m.mark from student as s inner join marks as m on s.id=m.student_id;
++----------------+---------+------+
+| name           | subject | mark |
++----------------+---------+------+
+| alok           | SQL     |   90 |
+| sai            | SQL     |   78 |
+| satya          | SQL     |   92 |
+| satyabrata     | SQL     |   70 |
+| sainath parida | SQL     |   80 |
++----------------+---------+------+
+5 rows in set (0.00 sec)
+
+mysql> select s.name,m.subject from student as s inner join marks as m on s.id=m.student_id where age>24;
++----------------+---------+
+| name           | subject |
++----------------+---------+
+| alok           | SQL     |
+| satyabrata     | SQL     |
+| sainath parida | SQL     |
++----------------+---------+
+3 rows in set (0.00 sec)
+
+mysql> select s.name,m.subject from student as s inner join marks as m on s.id=m.student_id where age>23;
++----------------+---------+
+| name           | subject |
++----------------+---------+
+| alok           | SQL     |
+| satyabrata     | SQL     |
+| sainath parida | SQL     |
++----------------+---------+
+3 rows in set (0.00 sec)
+
+mysql> select s.name,m.subject from student as s inner join marks as m on s.id=m.student_id where age>21;
++----------------+---------+
+| name           | subject |
++----------------+---------+
+| alok           | SQL     |
+| sai            | SQL     |
+| satyabrata     | SQL     |
+| sainath parida | SQL     |
+| satya          | SQL     |
++----------------+---------+
+5 rows in set (0.00 sec)
+
+mysql> select s.name,m.subject from student as s inner join marks as m on s.id=m.student_id order by ase;
+ERROR 1054 (42S22): Unknown column 'ase' in 'order clause'
+mysql> select s.name,m.subject from student as s inner join marks as m on s.id=m.student_id order by s.age ase;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ase' at line 1
+mysql> select s.name,m.subject from student as s inner join marks as m on s.id=m.student_id order by s.age asc;
++----------------+---------+
+| name           | subject |
++----------------+---------+
+| sai            | SQL     |
+| satya          | SQL     |
+| satyabrata     | SQL     |
+| sainath parida | SQL     |
+| alok           | SQL     |
++----------------+---------+
+5 rows in set (0.00 sec)
+
+mysql> select s.name,m.subject,s.age from student as s inner join marks as m on s.id=m.student_id order by s.age asc;
++----------------+---------+------+
+| name           | subject | age  |
++----------------+---------+------+
+| sai            | SQL     |   22 |
+| satya          | SQL     |   23 |
+| satyabrata     | SQL     |   26 |
+| sainath parida | SQL     |   26 |
+| alok           | SQL     |   28 |
++----------------+---------+------+
+5 rows in set (0.00 sec)
+
+mysql> select s.name,m.subject,s.age from student as s inner join marks as m on s.id=m.student_id order by s.age desc;
++----------------+---------+------+
+| name           | subject | age  |
++----------------+---------+------+
+| alok           | SQL     |   28 |
+| satyabrata     | SQL     |   26 |
+| sainath parida | SQL     |   26 |
+| satya          | SQL     |   23 |
+| sai            | SQL     |   22 |
++----------------+---------+------+
+5 rows in set (0.00 sec)
+
+mysql> select *from student ;
++------+-------------------+----------+------+--------------+-------------------+------------------+--------+------+------+
+| id   | name              | city     | age  | created_date | Father_name       | mother_name      | graede | dob  | mark |
++------+-------------------+----------+------+--------------+-------------------+------------------+--------+------+------+
+|    1 | alok              | bbsr     |   28 | 2026-09-17   | ratnakar padhi    | jayanti padhi    | A      | NULL |   90 |
+|    2 | sai               | cuttack  |   22 | 2026-09-17   | maydhare padhi    | jayanti padhi    | A      | NULL |   92 |
+|    4 | satyabrata        | balesore |   26 | 2026-09-17   | sibaji sankar sau | madhumita padhi  | B      | NULL |   80 |
+|    5 | satyabrata parida | balesore |   26 | 2026-09-17   | sibaji sankar sau | madhumita bahara | B      | NULL |   75 |
+|    6 | sainath parida    | bbsr     |   26 | 2026-09-17   | sankar sau        | madhumita bahara | B      | NULL |   79 |
+|    3 | satya             | bbsr     |   23 | 2026-09-17   | sibaji sau        | madhu padhi      | NULL   | NULL |   78 |
++------+-------------------+----------+------+--------------+-------------------+------------------+--------+------+------+
+6 rows in set (0.00 sec)
+
+mysql> select *from marks ;
++---------+------+------------+
+| subject | mark | student_id |
++---------+------+------------+
+| SQL     |   90 |          1 |
+| SQL     |   78 |          2 |
+| SQL     |   92 |          3 |
+| SQL     |   70 |          4 |
+| SQL     |   80 |          6 |
++---------+------+------------+
+5 rows in set (0.00 sec)
+
+mysql> notee;
